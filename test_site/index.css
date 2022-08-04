@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+}
+
+#header {
+    background-color: rgb(226, 176, 255);
+    height: 96px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 32px;
+    padding-right: 64px;
+}
+
+#title {
+    margin: 0;
+    font-size: 32px;
+    color: white;
+}
+
+#menu {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+a.menu-item {
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+}
+
+a.menu-item:hover {
+    color: rgb(230, 230, 230);
+}
+
+input.menu-item {
+    font-size: 20px;
+    color: rgb(50, 50, 50);
+}
