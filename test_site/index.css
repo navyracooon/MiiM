@@ -1,15 +1,22 @@
+:root {
+    --main-color: rgb(50, 50, 50);
+    --sub-color: rgb(70, 70, 80);
+    --line-color: rgb(200, 200, 200);
+    --blue: rgb(71, 140, 230);
+    --green: rgb(62, 187, 83);
+    --red: rgb(243, 85, 85);
+}
+
 body {
     margin: 0;
 }
 
 #header {
-    background-color: rgb(226, 176, 255);
+    background-color: var(--main-color);
     height: 96px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding-left: 32px;
-    padding-right: 64px;
 }
 
 #title {
@@ -19,25 +26,45 @@ body {
 }
 
 #menu {
-    width: 840px;
+    background-color: var(--sub-color);
+    height: 512px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.menu-row {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+}
+
+.menu-button {
+    border: none !important;
+    background-color: var(--blue);
 }
 
 a.menu-item {
     font-size: 24px;
     color: white;
     text-decoration: none;
+    border: 2px solid var(--line-color);
+    padding: 12px;
+    border-radius: 8px;
 }
 
 a.menu-item:hover {
-    color: rgb(230, 230, 230);
+    color: var(--line-color);
 }
 
 input.menu-item {
-    font-size: 20px;
-    color: rgb(50, 50, 50);
+    font-size: 24px;
+    color: var(--sub-color);
+}
+
+p.menu-item {
+    font-size: 24px;
+    color: white;
 }
 
 #copied-message {
@@ -48,7 +75,7 @@ input.menu-item {
     margin: 0;
     padding: 12px;
     border-radius: 8px;
-    background-color: rgb(50, 50, 50);
+    background-color: var(--sub-color);
     color: white;
     font-size: 24px;
 }
@@ -70,13 +97,22 @@ input.menu-item {
     padding-top: 48px;
 }
 
+.shelf {
+    display: flex;
+    overflow-x: auto;
+}
+
+.book {
+    width: 50%;
+}
+
 .carousel {
     display: flex;
     align-items: center;
     overflow-x: auto;
     margin-top: 48px;
     margin-bottom: 48px;
-    padding-left: 48px;
+    margin-left: 48px;
 }
 
 .miim-item {
@@ -87,10 +123,10 @@ input.menu-item {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    border: 1px solid rgb(50, 50, 50);
+    border: 2px solid var(--line-color);
     border-radius: 8px;
     margin-right: 8px;
-    background-color: rgb(251, 245, 255);
+    background-color: rgb(250, 250, 250);
 }
 
 .meme {
@@ -101,14 +137,14 @@ input.menu-item {
     width: 200px;
     font-size: 24px;
     color: white;
-    background-color: rgb(226, 176, 255);
+    background-color: var(--sub-color);
     border: none;
     border-radius: 8px;
     padding: 8px;
 }
 
 .recommend:hover {
-    background-color: rgb(200, 154, 227);
+    background-color: var(--main-color);
 }
 
 .tag-list {
@@ -135,28 +171,29 @@ input.menu-item {
 
 .tag-word {
     font-size: 16px;
-    border: 1px solid rgb(50, 50, 50);
+    border: 1px solid var(--line-color);
     border-radius: 8px;
     padding: 4px;
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 8px;
     margin-right: 8px;
+    background-color: white;
 }
 
 .voted-up {
-    background-color: rgb(62, 187, 83);
+    background-color: var(--green);
     color: white;
 }
 
 .voted-down {
-    background-color: rgb(243, 85, 85);
+    background-color: var(--red);
     color: white;
 }
 
 #subtitle {
     font-size: 32px;
-    color: rgb(50, 50, 50);
+    color: var(--sub-color);
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 48px;
