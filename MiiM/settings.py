@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+import os
 
 from pathlib import Path
 
@@ -75,8 +76,12 @@ WSGI_APPLICATION = 'MiiM.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ["DATABASE_NAME"],
+        'USER': os.environ["DATABASE_USERNAME"],
+        'PASSWORD': os.environ["DATABASE_PASSWORD"],
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
