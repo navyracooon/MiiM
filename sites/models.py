@@ -32,7 +32,7 @@ class Mi(models.Model):
 class Evalutation(models.Models):
     class Meta:
         db_table = "Evaluation"
-    evaluated_score = models.IntegerField()
+    evaluation_diff = models.IntegerField()
     evaluated_time = models.DateTimeField(auto_now_add=True)
     evaluator = models.ForeignKey(
         Mi, on_delete=models.CASCADE, related_name="evaluations"
