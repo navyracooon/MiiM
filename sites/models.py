@@ -4,32 +4,57 @@ from django.db import models
 # on_delete: decide what will happen when parent object is deleted
 # related_name: used when dereference is needed
 
-class Meme(models.Models):
+class Meme(models.Model):
     class Meta:
         db_table = "Meme"
     image = models.ImageField()
+    uploaded_time = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "Meme {}".format(self.id)
 
 
-class Tag(models.Models):
+class Tag(models.Model):
     class Meta:
         db_table = "Tag"
     tag_name = models.CharField(max_length=30)
-    score = models.PositiveIntegerField()
+    score = models.PositiveIntegerField(default=50)
     attached_meme = models.ForeignKey(
         Meme, on_delete=models.CASCADE, related_name="tags"
     )
+
+    def __str__(self):
+        return "{}: {}".format(
+            self.attached_meme, self.tag_name)
+
+
+class Language(models.Model):
+    class Meta:
+        db_table = "Language"
+    lang_name = models.CharField(max_length=30)
+    possibility = models.PositiveIntegerField(default=50)
+    attached_meme = models.ForeignKey(
+        Meme, on_delete=models.CASCADE, related_name="languages"
+    )
+
+    def __str__(self):
+        return "{}: {}".format(
+            self.attached_meme, self.lang_name)
 
 
 class Mi(models.Model):
     class Meta:
         db_table = "Mi"
     keyword = models.CharField(max_length=50)
-    favorite_meme = models.ManyToMany(
+    favorite_meme = models.ManyToManyField(
         Meme, related_name="liked_by"
         )
 
+    def __str__(self):
+        return self.keyword 
 
-class Evalutation(models.Models):
+
+class Evaluation(models.Model):
     class Meta:
         db_table = "Evaluation"
     evaluation_diff = models.IntegerField()
@@ -44,8 +69,15 @@ class Evalutation(models.Models):
         Tag, on_delete=models.CASCADE, related_name="evaluations"
         )
 
+    def __str__(self):
+        return "{}: ({}) -> {}".format(
+            self.evaluated_meme, self.evaluated_tag, self.evaluation_diff)
 
-class TagList(models.Models):
+
+class TagList(models.Model):
     class Meta:
         db_table = "TagList"
     tag_names = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.tag_names 
