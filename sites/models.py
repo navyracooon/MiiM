@@ -1,5 +1,15 @@
 from django.db import models
 
+# db_table: change name of table stored in a database
+# on_delete: decide what will happen when parent object is deleted
+# related_name: used when dereference is needed
+
+class Meme(models.Models):
+    class Meta:
+        db_table = "Meme"
+    image = models.ImageField()
+
+
 class Tag(models.Models):
     class Meta:
         db_table = "Tag"
@@ -8,12 +18,6 @@ class Tag(models.Models):
     attached_meme = models.ForeignKey(
         Meme, on_delete=models.CASCADE, related_name="tags"
     )
-
-
-class Meme(models.Models):
-    class Meta:
-        db_table = "Meme"
-    image = models.ImageField()
 
 
 class Mi(models.Model):
@@ -28,14 +32,15 @@ class Mi(models.Model):
 class Evalutation(models.Models):
     class Meta:
         db_table = "Evaluation"
-    evaluated_score = models.IntegerField()
+    evaluation_diff = models.IntegerField()
+    evaluated_time = models.DateTimeField(auto_now_add=True)
+    evaluator = models.ForeignKey(
+        Mi, on_delete=models.CASCADE, related_name="evaluations"
+        )
     evaluated_meme = models.ForeignKey(
         Meme, on_delete=models.CASCADE, related_name="evaluations"
         )
-    setter = models.ForeignKey(
-        Mi, on_delete=models.CASCADE, related_name="evaluations"
-        )
-    set_tag = models.ForeignKey(
+    evaluated_tag = models.ForeignKey(
         Tag, on_delete=models.CASCADE, related_name="evaluations"
         )
 
