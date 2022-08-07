@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MiiM | {{ mi.keyword }}</title>
+        <link rel="stylesheet" href="{% static 'sites/css/index.css' %}">
+        <script type="text/javascript" src="{% static 'sites/js/index.js' %}"></script>
+    </head>
+    <body>
+        <div id="header">
+            <p id="title">MiiM</p>
+        </div>
+        <div id="menu">
+            <div class="menu-row">
+                <form action="" method="get">
+                    <input type="text" name="mi" class="menu-item" placeholder="Mi...">
+                </form>
+                <div style="width:64px"></div>
+                <input type="text" class="menu-item" placeholder="検索">
+            </div>
+            <a class="menu-item menu-button" href="upload.html">画像を投稿</a>
+            <div style="display: flex; flex-direction: column; align-items: center">
+                <p class="menu-item">"{{ mi.keyword }}"のユーザーが最近評価したタグ</p>
+                <div class="menu-row">
+                    {% for recent_tag_name in recent_tag_names %}
+                    <a class="menu-item" href="upload.html">{{ recent_tag_name }}</a>
+                    <div style="width:24px"></div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <p id="copied-message">コピーしました！</p>
+        <div id="main">
+            <div class="shelf">
+                <div class="book">
+                    <p id="subtitle">新着</p>
+                    <div class="carousel">
+                        {% for recent_meme in recent_memes %}
+                        <div class="miim-item">
+                            <input type='image' class="meme" src="media/{{ recent_meme.image }}" onclick="message_copied()">
+                            <div class="tag-list">
+                                {% for tag in recent_meme.tags %}
+                                <div class="tag">
+                                    <input type="image" class="vote-tag-up" src="{% static 'sites/img/vote-tag-up.png' %}">
+                                    <p class="tag-word">{{ tag.tag_name }}</p>
+                                    <input type="image" class="vote-tag-down" src="{% static 'sites/img/vote-tag-down.png' %}">
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <button class="recommend">関連画像</button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="book">
+                    <p id="subtitle">トレンド</p>
+                    <div class="carousel">
+                        {% for trend_meme in trend_memes %}
+                        <div class="miim-item">
+                            <input type='image' class="meme" src="media/{{ trend_meme.image }}" onclick="message_copied()">
+                            <div class="tag-list">
+                                {% for tag in trend_meme.tags %}
+                                <div class="tag">
+                                    <input type="image" class="vote-tag-up" src="{% static 'sites/img/vote-tag-up.png' %}">
+                                    <p class="tag-word">{{ tag.tag_name }}</p>
+                                    <input type="image" class="vote-tag-down" src="{% static 'sites/img/vote-tag-down.png' %}">
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <button class="recommend">関連画像</button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="shelf">
+                <div class="book">
+                    <p id="subtitle">お気に入り</p>
+                    <div class="carousel">
+                        {% for favorite_meme in favorite_memes %}
+                        <div class="miim-item">
+                            <input type='image' class="meme" src="media/{{ favorite_meme.image }}" onclick="message_copied()">
+                            <div class="tag-list">
+                                {% for tag in favorite_meme.tags %}
+                                <div class="tag">
+                                    <input type="image" class="vote-tag-up" src="{% static 'sites/img/vote-tag-up.png' %}">
+                                    <p class="tag-word">{{ tag.tag_name }}</p>
+                                    <input type="image" class="vote-tag-down" src="{% static 'sites/img/vote-tag-down.png' %}">
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <button class="recommend">関連画像</button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="book">
+                    <p id="subtitle">関連画像</p>
+                    <div class="carousel">
+                        {% for related_meme in related_memes %}
+                        <div class="miim-item">
+                            <input type='image' class="meme" src="media/{{ related_meme.image }}" onclick="message_copied()">
+                            <div class="tag-list">
+                                {% for tag in related_meme.tags %}
+                                <div class="tag">
+                                    <input type="image" class="vote-tag-up" src="{% static 'sites/img/vote-tag-up.png' %}">
+                                    <p class="tag-word">{{ tag.tag_name }}</p>
+                                    <input type="image" class="vote-tag-down" src="{% static 'sites/img/vote-tag-down.png' %}">
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <button class="recommend">関連画像</button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
