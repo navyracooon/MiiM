@@ -46,8 +46,8 @@ class Mi(models.Model):
     class Meta:
         db_table = "Mi"
     keyword = models.CharField(max_length=50)
-    favorite_meme = models.ManyToManyField(
-        Meme, related_name="liked_by"
+    favorite_memes = models.ManyToManyField(
+        Meme, related_name="liked_by", blank=True
         )
 
     def __str__(self):
@@ -62,16 +62,13 @@ class Evaluation(models.Model):
     evaluator = models.ForeignKey(
         Mi, on_delete=models.CASCADE, related_name="evaluations"
         )
-    evaluated_meme = models.ForeignKey(
-        Meme, on_delete=models.CASCADE, related_name="evaluations"
-        )
     evaluated_tag = models.ForeignKey(
         Tag, on_delete=models.CASCADE, related_name="evaluations"
         )
 
     def __str__(self):
         return "{}: ({}) -> {}".format(
-            self.evaluated_meme, self.evaluated_tag, self.evaluation_diff)
+            self.evaluator, self.evaluated_tag, self.evaluation_diff)
 
 
 class TagList(models.Model):
