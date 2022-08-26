@@ -3,3 +3,6 @@
 /.venv/
 __pycache__/
 
+!vote-tag-down.png
+!vote-tag-up.png
+
