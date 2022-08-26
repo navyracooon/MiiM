@@ -18,7 +18,7 @@ class Tag(models.Model):
     class Meta:
         db_table = "Tag"
     tag_name = models.CharField(max_length=30)
-    score = models.PositiveIntegerField(default=50)
+    score = models.IntegerField(default=0)
     attached_meme = models.ForeignKey(
         Meme, on_delete=models.CASCADE, related_name="tags"
     )
@@ -32,7 +32,7 @@ class Language(models.Model):
     class Meta:
         db_table = "Language"
     lang_name = models.CharField(max_length=30)
-    possibility = models.PositiveIntegerField(default=50)
+    possibility = models.IntegerField(default=0)
     attached_meme = models.ForeignKey(
         Meme, on_delete=models.CASCADE, related_name="languages"
     )
