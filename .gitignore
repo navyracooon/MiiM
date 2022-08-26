@@ -2,6 +2,7 @@
 *.png
 /.venv/
 __pycache__/
+migrations/
 
 !vote-tag-down.png
 !vote-tag-up.png
