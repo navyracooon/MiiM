@@ -37,7 +37,7 @@
                     <div class="carousel">
                         {% for recent_meme in recent_memes %}
                         <div class="miim-item">
-                            <input type='image' class="meme" src="media/{{ recent_meme.image }}" onclick="message_copied()">
+                            <input type='image' class="meme" src="{{ recent_meme.image_url }}" onclick="message_copied()">
                             <div class="tag-list">
                                 {% for tag in recent_meme.tags %}
                                 <div class="tag">
@@ -57,7 +57,7 @@
                     <div class="carousel">
                         {% for trend_meme in trend_memes %}
                         <div class="miim-item">
-                            <input type='image' class="meme" src="media/{{ trend_meme.image }}" onclick="message_copied()">
+                            <input type='image' class="meme" src="{{ trend_meme.image_url }}" onclick="message_copied()">
                             <div class="tag-list">
                                 {% for tag in trend_meme.tags %}
                                 <div class="tag">
@@ -79,7 +79,7 @@
                     <div class="carousel">
                         {% for favorite_meme in favorite_memes %}
                         <div class="miim-item">
-                            <input type='image' class="meme" src="media/{{ favorite_meme.image }}" onclick="message_copied()">
+                            <input type='image' class="meme" src="{{ favorite_meme.image_url }}" onclick="message_copied()">
                             <div class="tag-list">
                                 {% for tag in favorite_meme.tags %}
                                 <div class="tag">
@@ -99,7 +99,7 @@
                     <div class="carousel">
                         {% for related_meme in related_memes %}
                         <div class="miim-item">
-                            <input type='image' class="meme" src="media/{{ related_meme.image }}" onclick="message_copied()">
+                            <input type='image' class="meme" src="{{ related_meme.image_url }}" onclick="message_copied()">
                             <div class="tag-list">
                                 {% for tag in related_meme.tags %}
                                 <div class="tag">

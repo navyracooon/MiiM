@@ -7,7 +7,7 @@ from django.db import models
 class Meme(models.Model):
     class Meta:
         db_table = "Meme"
-    image = models.ImageField()
+    image_url = models.URLField()
     uploaded_time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
