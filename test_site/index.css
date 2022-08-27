@@ -16,18 +16,59 @@ body {
     height: 96px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding-left: 32px;
+    padding-right: 32px;
+    color: white;
 }
 
 #title {
     margin: 0;
     font-size: 32px;
+}
+
+#catchcopy {
+    font-size: 20px;
+}
+
+.tutorial {
+    position: absolute;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
     color: white;
+}
+
+#Mi-tutorial {
+    top: 160px;
+    right: 70%;
+}
+
+#upload-tutorial {
+    top: 380px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+}
+
+#tag-tutorial {
+    top: 450px;
+    left: 68%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 230px;
+}
+
+#tag-tutorial p {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 #menu {
     background-color: var(--sub-color);
-    height: 512px;
+    height: 640px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -60,6 +101,14 @@ a.menu-item:hover {
 input.menu-item {
     font-size: 24px;
     color: var(--sub-color);
+}
+
+#upload-link {
+    width: 512px;
+}
+
+#upload-tag {
+    width: 256px;
 }
 
 p.menu-item {
@@ -158,7 +207,6 @@ p.menu-item {
 .tag {
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
 .vote-tag-up {
@@ -179,6 +227,7 @@ p.menu-item {
     margin-left: 8px;
     margin-right: 8px;
     background-color: white;
+    color: var(--sub-color);
 }
 
 .voted-up {
