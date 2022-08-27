@@ -247,3 +247,16 @@ p.menu-item {
     margin-bottom: 0;
     margin-left: 48px;
 }
+
+footer {
+    background-color: var(--sub-color);
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
