@@ -7,8 +7,34 @@
         <script type="text/javascript" src="{% static 'sites/js/index.js' %}"></script>
     </head>
     <body>
+        <div id="Mi-tutorial" class="tutorial">
+            好きなMi(キーワード)を入力しよう！<br>
+            タグの評価や、お気に入り画像が保存されるよ！
+        </div>
+        <div id="upload-tutorial" class="tutorial">
+            リンクを貼ると画像をアップロードできるよ！<br>
+            アップロードするときに、好きなタグを1つつけれるよ！
+        </div>
+        <div id="tag-tutorial" class="tutorial">
+            <p style="font-size:24px">タグを評価しよう！</p>
+            <p>Memeに...</p>
+            <div class="tag">
+                <p>合ってる！</p>
+                <div style="width:6px"></div>
+                <input type="image" class="vote-tag-up" src="{% static 'sites/img/vote-tag-up.png' %}">
+                <p class="tag-word" style="font-weight:normal;">test_taga2</p>
+                <input type="image" class="vote-tag-down" src="{% static 'sites/img/vote-tag-down.png' %}">
+                <div style="width:6px"></div>
+                <p>合ってない！</p>
+            </div>
+            <p>
+                合ってないタグは外されて<br>
+                新しいタグがつけれるようになるよ！
+            </p>
+        </div>
         <div id="header">
             <p id="title">MiiM</p>
+            <p id="catchcopy">ワンクリックでMemeを簡単コピー！</p>
         </div>
         <div id="menu">
             <div class="menu-row">
@@ -18,7 +44,15 @@
                 <div style="width:64px"></div>
                 <input type="text" class="menu-item" placeholder="検索">
             </div>
-            <a class="menu-item menu-button" href="upload.html">画像を投稿</a>
+            <div class="menu-row">
+                <input type="text" id="upload-link" class="menu-item" placeholder="画像リンク...">
+                <div style="width:64px"></div>
+                <input type="text" id="upload-tag" class="menu-item" placeholder="タグ...">
+                <div style="width:64px"></div>
+                <a class="menu-item menu-button" href="upload.html">画像を投稿</a>
+                <div style="width:48px"></div>
+            </div>
+            <div style="height:0px"></div>
             <div style="display: flex; flex-direction: column; align-items: center">
                 <p class="menu-item">"{{ mi.keyword }}"のユーザーが最近評価したタグ</p>
                 <div class="menu-row">
@@ -117,4 +151,12 @@
             </div>
         </div>
     </body>
+    <footer>
+        <div style="width:48px"></div>
+        <a href="index.html">トップ</a>
+        <div style="width:48px"></div>
+        <a href="term.html">利用規約</a>
+        <div style="width:48px"></div>
+        <a>問い合わせ</a>
+    </footer>
 </html>
