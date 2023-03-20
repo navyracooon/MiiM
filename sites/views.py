@@ -8,26 +8,29 @@ from .models import (
 class IndexView(TemplateView):
     template_name = "sites/index.html"
 
-    # def get_recent_tag_names(self, evaluations_by_mi):
-    #     # tag_nameの重複を確認する都合上、tag_nameのリストを渡している
-    #     # ※ tagのリストを作ってしまうと重複をはじくことができない
-    #     recent_tag_names = []
-    #     for evaluation in evaluations_by_mi:
-    #         if len(recent_tag_names) >= 6:
-    #             break
-    #         tag_name_to_add = evaluation.evaluated_tag.tag_name
-    #         if tag_name_to_add not in recent_tag_names:
-    #             recent_tag_names.append(tag_name_to_add)
-    #     return recent_tag_names
+    '''
+    評価履歴じゃなくて検索履歴を見た方がよさげ
+    def get_recent_tag_names(self, evaluations_by_mi):
+            # tag_nameの重複を確認する都合上、tag_nameのリストを渡している
+            # ※ tagのリストを作ってしまうと重複をはじくことができない
+            recent_tag_names = []
+            for evaluation in evaluations_by_mi:
+                if len(recent_tag_names) >= 6:
+                    break
+                tag_name_to_add = evaluation.evaluated_tag.tag_name
+                if tag_name_to_add not in recent_tag_names:
+                    recent_tag_names.append(tag_name_to_add)
+            return recent_tag_names
+    ''' 
 
-    # def get_recent_memes(self):
-    #     recent_memes_ins = Meme.objects.all().order_by("-uploaded_time")[:10]
-    #     # tagsはクエリオブジェクトなので注意
-    #     recent_memes = [
-    #             {"image_url": recent_meme_ins.image_url, 
-    #              "tags": recent_meme_ins.tags.all()} 
-    #             for recent_meme_ins in recent_memes_ins]
-    #     return recent_memes
+    def get_recent_memes(self):
+        recent_memes_ins = Meme.objects.all().order_by("-uploaded_time")[:10]
+        # tagsはクエリオブジェクトなので注意
+        recent_memes = [
+                {"image_url": recent_meme_ins.image_url, 
+                 "tags": recent_meme_ins.tags.all()} 
+                for recent_meme_ins in recent_memes_ins]
+        return recent_memes
 
     # def get_trend_memes(self, evaluations):
     #     trend_memes_ins = []
@@ -95,11 +98,11 @@ class IndexView(TemplateView):
         context = {
                 "mi": mi,
                 # "recent_tag_names": self.get_recent_tag_names(evaluations_by_mi),
-                # "recent_memes": self.get_recent_memes(),
-                # "trend_memes": self.get_trend_memes(evaluations),
-                # "favorite_memes": self.get_favorite_memes(mi),
+                "recent_memes": self.get_recent_memes(),
+                "trend_memes": self.get_trend_memes(evaluations),
+                "favorite_memes": self.get_favorite_memes(mi),
                 # "related_memes": self.get_related_memes(mi),
-                }
+            }
         return context
 
 
